@@ -27,7 +27,7 @@ class NewsListViewModel: NewsListViewModelProtocol {
             case .failure(let error):
                 print(error)
             case .success(let newsResponse):
-                newsResponse.articles?.forEach({ news in
+                newsResponse.articles?.forEach({ [unowned self] news in
                     self.news.append(news)
                     print(self.news.count)
                     completion()

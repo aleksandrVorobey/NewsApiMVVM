@@ -18,10 +18,28 @@ class NewsTableViewCell: UITableViewCell {
         
     var newsCellViewModel: NewsCellViewModelProtocol! {
         didSet {
-            self.nameLabel.text = newsCellViewModel.newsName
-            self.titleLabel.text = newsCellViewModel.newsTitle
-            self.descriptionLabel.text = newsCellViewModel.newsDescription
+            if let newsCellViewModel = newsCellViewModel {
+                
+                self.nameLabel.text = newsCellViewModel.newsName
+                self.titleLabel.text = newsCellViewModel.newsTitle
+                self.descriptionLabel.text = newsCellViewModel.newsDescription
+                
+                ImageManager.shared.getImageRequest(urlString: newsCellViewModel.urlToImage) { data in
+                    guard let data = data else { return }
+                    DispatchQueue.main.async {
+                        self.newsImage.image = UIImage(data: data)
+                    }
+                }
+            }
         }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.newsImage.image = nil
+        self.nameLabel.text = nil
+        self.titleLabel.text = nil
+        self.descriptionLabel.text = nil
     }
     
     override func awakeFromNib() {

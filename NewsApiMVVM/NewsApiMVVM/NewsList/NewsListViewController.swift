@@ -25,14 +25,13 @@ class NewsListViewController: UIViewController {
         viewModel = NewsListViewModel()
         setupTableView()
     }
-
     
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.rowHeight = 450
         tableView.register(UINib(nibName: NewsTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: NewsTableViewCell.identifier)
     }
-
 }
 
 extension NewsListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -50,7 +49,4 @@ extension NewsListViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 450
-    }
 }

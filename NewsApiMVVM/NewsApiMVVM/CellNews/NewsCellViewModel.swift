@@ -11,6 +11,8 @@ protocol NewsCellViewModelProtocol: AnyObject {
     var newsName: String { get }
     var newsTitle: String { get }
     var newsDescription: String { get }
+    var urlToImage: String { get }
+    var imageData: Data? { get }
     init(news: News)
 }
 
@@ -28,6 +30,12 @@ class NewsCellViewModel: NewsCellViewModelProtocol {
     
     var newsDescription: String {
         news.description ?? ""
+    }
+    
+    var imageData: Data?
+    
+    var urlToImage: String {
+        news.urlToImage ?? ""
     }
     
     required init(news: News) {
