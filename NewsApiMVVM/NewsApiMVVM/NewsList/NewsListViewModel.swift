@@ -9,8 +9,8 @@ import Foundation
 
 protocol NewsListViewModelProtocol {
     var news: [News] { get }
-    func getNews(completion: @escaping () -> Void)
     var network: NewsNetworkProtocol { get }
+    func getNews(completion: @escaping () -> Void)
     func numberOfRows() -> Int
     func cellViewModel(at indexPath: IndexPath) -> NewsCellViewModelProtocol
 }

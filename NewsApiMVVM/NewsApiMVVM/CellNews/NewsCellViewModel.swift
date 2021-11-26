@@ -32,7 +32,9 @@ class NewsCellViewModel: NewsCellViewModelProtocol {
         news.description ?? ""
     }
     
-    var imageData: Data?
+    var imageData: Data? {
+        ImageManager2.shared.fetchImageData(from: news.urlToImage!)
+    }
     
     var urlToImage: String {
         news.urlToImage ?? ""

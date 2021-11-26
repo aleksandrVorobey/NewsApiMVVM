@@ -13,8 +13,10 @@ class ImageManager2 {
     private init() {}
     
     func fetchImageData(from url: String) -> Data? {
-        guard let url = URL(string: url) else { return nil }
-        guard let imageData = try? Data(contentsOf: url) else { return nil }
-        return imageData
+        DispatchQueue.global(qos: .utility).sync {
+            guard let url = URL(string: url) else { return nil }
+            guard let imageData = try? Data(contentsOf: url) else { return nil }
+            return imageData
+        }
     }
 }

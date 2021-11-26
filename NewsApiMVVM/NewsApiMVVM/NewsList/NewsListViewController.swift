@@ -11,10 +11,12 @@ class NewsListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    private var viewModel: NewsListViewModelProtocol! {
+    private  var viewModel: NewsListViewModelProtocol! {
         didSet {
-            viewModel.getNews {
-                self.tableView.reloadData()
+            viewModel.getNews { [weak self] in
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
             }
         }
     }
@@ -41,7 +43,7 @@ extension NewsListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier, for: indexPath) as! NewsTableViewCell
-        cell.newsCellViewModel = viewModel.cellViewModel(at: indexPath)
+        cell.viewModel = viewModel.cellViewModel(at: indexPath)
         return cell
     }
     

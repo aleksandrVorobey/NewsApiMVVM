@@ -16,15 +16,18 @@ class NewsTableViewCell: UITableViewCell {
     
     static let identifier = "NewsTableViewCell"
         
-    var newsCellViewModel: NewsCellViewModelProtocol! {
+     weak var viewModel: NewsCellViewModelProtocol! {
         didSet {
-            if let newsCellViewModel = newsCellViewModel {
+            if let viewModel = viewModel {
                 
-                self.nameLabel.text = newsCellViewModel.newsName
-                self.titleLabel.text = newsCellViewModel.newsTitle
-                self.descriptionLabel.text = newsCellViewModel.newsDescription
-                
-                ImageManager.shared.getImageRequest(urlString: newsCellViewModel.urlToImage) { data in
+                self.nameLabel.text = viewModel.newsName
+                self.titleLabel.text = viewModel.newsTitle
+                self.descriptionLabel.text = viewModel.newsDescription
+//                guard let data = viewModel.imageData else { return }
+//                DispatchQueue.main.async {
+//                    self.newsImage.image = UIImage(data: data)
+//                }
+                ImageManager.shared.getImageRequest(urlString: viewModel.urlToImage) { data in
                     guard let data = data else { return }
                     DispatchQueue.main.async {
                         self.newsImage.image = UIImage(data: data)
