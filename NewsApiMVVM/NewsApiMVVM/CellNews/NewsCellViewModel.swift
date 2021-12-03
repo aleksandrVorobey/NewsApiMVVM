@@ -12,35 +12,30 @@ protocol NewsCellViewModelProtocol: AnyObject {
     var newsTitle: String { get }
     var newsDescription: String { get }
     var urlToImage: String { get }
-    var imageData: Data? { get }
-    init(news: News)
+    init(news: Article)
 }
 
 class NewsCellViewModel: NewsCellViewModelProtocol {
     
-    private let news: News
+    private let news: Article
     
     var newsName: String {
-        news.source?.name ?? ""
+        news.source?.name ?? "Unknown"
     }
     
     var newsTitle: String {
-        news.title ?? ""
+        news.title ?? "Unknown"
     }
     
     var newsDescription: String {
-        news.description ?? ""
-    }
-    
-    var imageData: Data? {
-        ImageManager2.shared.fetchImageData(from: news.urlToImage!)
+        news.description ?? "Unknown"
     }
     
     var urlToImage: String {
-        news.urlToImage ?? ""
+        news.urlToImage ?? "https://cdn.pixabay.com/photo/2016/06/02/16/16/newspaper-1431401_960_720.png"
     }
     
-    required init(news: News) {
+    required init(news: Article) {
         self.news = news
     }
     

@@ -7,17 +7,15 @@
 
 import Foundation
 
-
-
 // MARK: - NewsResponse
 struct NewsResponse: Decodable {
     let status: String?
     let totalResults: Int?
-    let articles: [News]?
+    let articles: [Article]?
 }
 
 // MARK: - News
-struct News: Decodable {
+struct Article: Decodable {
     let source: Source?
     let author: String?
     let title: String?
@@ -26,12 +24,6 @@ struct News: Decodable {
     let urlToImage: String?
     let publishedAt: String?
     let content: String?
-
-//    enum CodingKeys: String, CodingKey {
-//        case author, title, source
-//        case articleDescription = "description"
-//        case url, urlToImage, content, publishedAt
-//    }
 }
 
 // MARK: - Source

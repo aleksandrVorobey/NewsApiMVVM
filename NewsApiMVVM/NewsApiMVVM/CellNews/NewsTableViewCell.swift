@@ -19,14 +19,10 @@ class NewsTableViewCell: UITableViewCell {
      weak var viewModel: NewsCellViewModelProtocol! {
         didSet {
             if let viewModel = viewModel {
-                
                 self.nameLabel.text = viewModel.newsName
                 self.titleLabel.text = viewModel.newsTitle
                 self.descriptionLabel.text = viewModel.newsDescription
-//                guard let data = viewModel.imageData else { return }
-//                DispatchQueue.main.async {
-//                    self.newsImage.image = UIImage(data: data)
-//                }
+
                 ImageManager.shared.getImageRequest(urlString: viewModel.urlToImage) { data in
                     guard let data = data else { return }
                     DispatchQueue.main.async {

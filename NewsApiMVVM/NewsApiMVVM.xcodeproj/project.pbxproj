@@ -23,7 +23,6 @@
 		A6A15434274E73600089796D /* NewsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A15433274E73600089796D /* NewsCellViewModel.swift */; };
 		A6A15436274E79F70089796D /* NewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A15435274E79F70089796D /* NewsListViewModel.swift */; };
 		A6A15438274ED0680089796D /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A15437274ED0680089796D /* ImageManager.swift */; };
-		A6A1543C274ED89F0089796D /* ImageManager2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A1543B274ED89F0089796D /* ImageManager2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +44,6 @@
 		A6A15433274E73600089796D /* NewsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCellViewModel.swift; sourceTree = "<group>"; };
 		A6A15435274E79F70089796D /* NewsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewModel.swift; sourceTree = "<group>"; };
 		A6A15437274ED0680089796D /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
-		A6A1543B274ED89F0089796D /* ImageManager2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +97,6 @@
 				A6A1542D274D9E9D0089796D /* NetworkManager + News.swift */,
 				A6A1542B274D9CDF0089796D /* URLFactory.swift */,
 				A6A15437274ED0680089796D /* ImageManager.swift */,
-				A6A1543B274ED89F0089796D /* ImageManager2.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -224,7 +221,6 @@
 				A6A1542E274D9E9D0089796D /* NetworkManager + News.swift in Sources */,
 				A6A15438274ED0680089796D /* ImageManager.swift in Sources */,
 				A6A1540C274D81FD0089796D /* AppDelegate.swift in Sources */,
-				A6A1543C274ED89F0089796D /* ImageManager2.swift in Sources */,
 				A6A15424274D872D0089796D /* NetworkManager.swift in Sources */,
 				A6A15421274D82460089796D /* NewsTableViewCell.swift in Sources */,
 				A6A15436274E79F70089796D /* NewsListViewModel.swift in Sources */,

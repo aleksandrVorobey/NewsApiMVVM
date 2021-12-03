@@ -27,7 +27,8 @@ class NetworkManager {
             }
             print("Data is \(data)")
             do {
-                let decodedObject = try JSONDecoder().decode(T.self, from: data)
+                let jsonDecoder = JSONDecoder()
+                let decodedObject = try jsonDecoder.decode(T.self, from: data)
                 DispatchQueue.main.async {
                     completion(.success(decodedObject))
                 }

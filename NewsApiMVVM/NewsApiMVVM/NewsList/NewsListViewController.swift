@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class NewsListViewController: UIViewController {
 
@@ -31,7 +32,7 @@ class NewsListViewController: UIViewController {
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 450
+        tableView.rowHeight = 350
         tableView.register(UINib(nibName: NewsTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: NewsTableViewCell.identifier)
     }
 }
@@ -49,6 +50,14 @@ extension NewsListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let news = viewModel.news[indexPath.row]
+        guard let url = URL(string: news.url ?? "") else { return }
+        
+        let config = SFSafariViewController.Configuration()
+        let safariVC = SFSafariViewController(url: url, configuration: config)
+        safariVC.modalPresentationStyle = .fullScreen
+        present(safariVC, animated: true)
     }
     
 }

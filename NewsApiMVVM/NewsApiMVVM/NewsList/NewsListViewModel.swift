@@ -8,7 +8,7 @@
 import Foundation
 
 protocol NewsListViewModelProtocol {
-    var news: [News] { get }
+    var news: [Article] { get }
     var network: NewsNetworkProtocol { get }
     func getNews(completion: @escaping () -> Void)
     func numberOfRows() -> Int
@@ -19,7 +19,7 @@ class NewsListViewModel: NewsListViewModelProtocol {
         
     let network: NewsNetworkProtocol = NetworkManager()
         
-    var news = [News]()
+    var news = [Article]()
     
     func getNews(completion: @escaping () -> Void) {
         network.requestNews { result in
@@ -27,17 +27,15 @@ class NewsListViewModel: NewsListViewModelProtocol {
             case .failure(let error):
                 print(error)
             case .success(let newsResponse):
-                newsResponse.articles?.forEach({ [unowned self] news in
-                    self.news.append(news)
-                    print(self.news.count)
-                    completion()
-                })
+                self.news = newsResponse.articles ?? []
+                print(self.news.count)
+                completion()
             }
         }
     }
     
     func numberOfRows() -> Int {
-        news.count
+        return news.count
     }
     
     func cellViewModel(at indexPath: IndexPath) -> NewsCellViewModelProtocol {
