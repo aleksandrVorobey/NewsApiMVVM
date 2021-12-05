@@ -8,5 +8,5 @@
 import Foundation
 
 protocol NewsNetworkProtocol {
-    func requestNews(completion: @escaping (Result<NewsResponse, Error>) -> Void)
+    func requestNews(paramPage: Int, completion: @escaping (Result<NewsResponse, Error>) -> Void)
 }

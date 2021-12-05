@@ -24,7 +24,6 @@ class NewsListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         viewModel = NewsListViewModel()
         setupTableView()
     }
@@ -60,4 +59,16 @@ extension NewsListViewController: UITableViewDataSource, UITableViewDelegate {
         present(safariVC, animated: true)
     }
     
+}
+
+extension NewsListViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > scrollView.contentSize.height / 2 {
+            viewModel.getNews { [weak self] in
+                   DispatchQueue.main.async {
+                       self?.tableView.reloadData()
+                   }
+            }
+        }
+    }
 }

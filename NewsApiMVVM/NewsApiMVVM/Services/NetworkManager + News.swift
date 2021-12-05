@@ -8,10 +8,8 @@
 import Foundation
 
 extension NetworkManager: NewsNetworkProtocol {
-    func requestNews(completion: @escaping (Result<NewsResponse, Error>) -> Void) {
-        //let url = URLFactory.baseURLString + URLFactory.usTopHeadline + URLFactory.apiKey
-        //let url = URLFactory.articles()
-        let url = URLFactory.url().absoluteString
+    func requestNews(paramPage: Int, completion: @escaping (Result<NewsResponse, Error>) -> Void) {
+        let url = URLFactory.url(paramPage: paramPage).absoluteString
         print("url - \(url)")
         baseRequest(url: url, completion: completion)
     }

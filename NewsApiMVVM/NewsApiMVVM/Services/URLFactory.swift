@@ -7,32 +7,25 @@
 
 import Foundation
 
+struct Params {
+    let pageSize: Int
+    let page: Int
+    let search: String
+}
+
 struct URLFactory {
     
-    static let apiKey = "18e1522100154cbdb37e68e3e718761c"
+    //static let apiKey = "18e1522100154cbdb37e68e3e718761c"
+    static let apiKey = "7ba646457e7a40b29f317b2e43b5081f"
 
-    static let baseURLComponents: URLComponents = {
-        let url = URL(string: "https://newsapi.org/v2/")!
-        let queryItem = [URLQueryItem(name: "q", value: "ios"),
-                         URLQueryItem(name: "apiKey", value: "\(apiKey)")]
-        var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)!
-        urlComponents.queryItems = queryItem
-        return urlComponents
-    }()
-    
-    static func articles() -> String {
-        let urlComponents = baseURLComponents
-        return urlComponents.url!.appendingPathComponent("everything").absoluteString
-    }
-    
-    static func url() -> URL {
+    static func url(paramPage: Int) -> URL {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "newsapi.org"
         components.path = "/v2/everything"
-        components.queryItems = [URLQueryItem(name: "q", value: "беларусь"),
-                                 URLQueryItem(name: "pageSize", value: "1"),
-                                 URLQueryItem(name: "page", value: "1"),
+        components.queryItems = [URLQueryItem(name: "q", value: "apple"),
+                                 URLQueryItem(name: "pageSize", value: "10"),
+                                 URLQueryItem(name: "page", value: "\(paramPage)"),
                                  URLQueryItem(name: "apiKey", value: "\(apiKey)")]
         return components.url!
     }
